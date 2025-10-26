@@ -103,11 +103,14 @@ function toggleSound(wavePath) {
 // Auto-play musik pas user klik tombol (Triger utama)
 function autoPlaySound(wavePath) {
   if (getIsMuted()) {
-    playAudio();
-    if (waveTimeline) {
-      setWaveAnimated(wavePath);
-      waveTimeline.play(0);
-    }
+    // Delay 3 detik sebelum musik mulai
+    setTimeout(() => {
+      playAudio();
+      if (waveTimeline) {
+        setWaveAnimated(wavePath);
+        waveTimeline.play(0);
+      }
+    }, 1000);
   }
 }
 
