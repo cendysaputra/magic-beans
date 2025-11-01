@@ -1,6 +1,11 @@
 import gsap from 'gsap';
 
-// Animasi transisi awan
+// Deteksi mobile/desktop
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+// Transisi awan
 function playTransition() {
   const transisi1 = document.getElementById('transisi-1');
   const transisi2 = document.getElementById('transisi-2');
@@ -10,20 +15,39 @@ function playTransition() {
   // Awan masuk nutup layar
   const timeline = gsap.timeline();
 
-  timeline
-    // Transisi-1
-    .to(transisi1, {
-      x: 0,
-      duration: 1.5,
-      ease: "power2.inOut"
-    }, 0)
+  if (isMobile()) {
+    // Mobile: animasi atas > bawah
+    timeline
+      // Transisi-1 : atas
+      .to(transisi1, {
+        y: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, 0)
 
-    // Transisi-2
-    .to(transisi2, {
-      x: 0,
-      duration: 1.5,
-      ease: "power2.inOut"
-    }, 0.2);
+      // Transisi-2 : bawah
+      .to(transisi2, {
+        y: "16.67vh",
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, 0.2);
+  } else {
+    // Desktop: animasi kanan > kiri
+    timeline
+      // Transisi-1 : kiri
+      .to(transisi1, {
+        x: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, 0)
+
+      // Transisi-2 : kanan
+      .to(transisi2, {
+        x: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, 0.2);
+  }
 }
 
 // Button Next
@@ -32,10 +56,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const transisi2 = document.getElementById('transisi-2');
   const acceptBtn = document.getElementById('acceptBtn');
 
-  // Set posisi awal awan di luar layar saat page load
+  // Posisi awal awan
   if (transisi1 && transisi2) {
-    gsap.set(transisi1, { x: "-150vw" }); // transisi-1 dari kiri
-    gsap.set(transisi2, { x: "150vw" });  // transisi-2 dari kanan
+    if (isMobile()) {
+      // Mobile: posisi awal atas-bawah
+      gsap.set(transisi1, { y: "-150vh" });
+      gsap.set(transisi2, { y: "150vh" });
+    } else {
+      // Desktop: posisi awal kanan-kiri
+      gsap.set(transisi1, { x: "-150vw" });
+      gsap.set(transisi2, { x: "150vw" });
+    }
   }
 
   if (acceptBtn) {
