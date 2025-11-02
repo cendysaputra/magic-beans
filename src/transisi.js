@@ -1,8 +1,8 @@
 import gsap from 'gsap';
 
-// Deteksi mobile/desktop
+// Deteksi mobile/tablet + desktop
 function isMobile() {
-  return window.innerWidth <= 768;
+  return window.innerWidth < 1024; // Mobile & Tablet
 }
 
 // Transisi awan
@@ -16,7 +16,7 @@ function playTransition() {
   const timeline = gsap.timeline();
 
   if (isMobile()) {
-    // Mobile: animasi atas > bawah
+    // Mobile & Tablet: animasi atas > bawah
     timeline
       // Transisi-1 : atas
       .to(transisi1, {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Posisi awal awan
   if (transisi1 && transisi2) {
     if (isMobile()) {
-      // Mobile: posisi awal atas-bawah
+      // Mobile & Tablet: posisi awal atas-bawah
       gsap.set(transisi1, { y: "-150vh" });
       gsap.set(transisi2, { y: "150vh" });
     } else {

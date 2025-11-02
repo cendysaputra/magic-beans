@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
     <title>Magic Beans</title>
   </head>
 
@@ -12,17 +15,17 @@
     <div class="fixed top-4 left-4 flex gap-1.5 z-999">
       <!-- Info Popup -->
       <div class="relative group">
-        <div class="w-8 h-8 border-2 border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-white hover:border-white transition-all">
+        <div class="w-8 h-8 border-2 border-black rounded-full flex items-center justify-center cursor-pointer hover:border-black transition-all">
           <span class="text-black text-[16px]">i</span>
         </div>
         <!-- Popup Tooltip -->
-        <div class="absolute top-10 left-0 bg-white text-black px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-          <span class="text-[16px]">Created by Imajiner</span>
+        <div class="absolute top-10 left-0 bg-[#F5F5F5] text-black px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+          <span class="text-[12px]">Created by Imajiner</span>
         </div>
       </div>
 
       <!-- Button Musik -->
-      <div id="soundToggle" class="relative w-8 h-8 bg-[#DDDDDD50] hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer transition-all">
+      <div id="soundToggle" class="relative w-8 h-8 bg-[#DDDDDD50] hover:bg-[#F5F5F5] backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer transition-all">
         <svg width="16" height="7" viewBox="0 0 18 8" class="wave-svg">
           <path
             id="wavePath"
@@ -41,27 +44,40 @@
       <img src="/assets/images/cloud-back.png" alt="Cloud Background" class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"/>
 
       <!-- Awan Depan -->
-      <img src="/assets/images/cloud-c1.png" alt="Cloud 1" class="absolute top-0 left-0 -mt-12 -ml-16 w-[250px] pointer-events-none z-30"/>
-      <img src="/assets/images/cloud-c2.png" alt="Cloud 2" class="absolute ml-60 -mt-80 w-[300px] pointer-events-none z-30"/>
-      <img src="/assets/images/cloud-c3.png" alt="Cloud 3" class="absolute w-full -bottom-7 pointer-events-none z-30"/>
+      <img src="/assets/images/cloud-c1.png" alt="Cloud 1" class="absolute top-0 sm:-top-14 lg:-top-30 left-0 sm:-left-10 lg:left-20 -mt-20 -ml-16 w-[70%] sm:w-[70%] lg:w-[35%] pointer-events-none z-30"/>
+      <img src="/assets/images/cloud-c2.png" alt="Cloud 2" class="absolute ml-60 sm:ml-90 lg:ml-150 -mt-72 sm:-mt-88 lg:-mt-130 w-[300px] sm:w-[70%] lg:w-[65%] pointer-events-none z-30"/>
+      <img src="/assets/images/cloud-c3.png" alt="Cloud 3" class="absolute w-full -bottom-7 sm:-bottom-10 lg:-bottom-4 lg:w-[60%] lg:-ml-[150px] pointer-events-none z-30"/>
+
+      <!-- Animasi Daun Terbang (di belakang pohon) -->
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-16 h-16 pointer-events-none z-3"/>
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-20 h-20 pointer-events-none z-3"/>
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-14 h-14 pointer-events-none z-3"/>
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-18 h-18 pointer-events-none z-3"/>
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-15 h-15 pointer-events-none z-3"/>
+      <img src="/assets/images/daun-terbang.svg" alt="Falling Leaf" class="falling-leaf fixed w-17 h-17 pointer-events-none z-3"/>
 
       <!-- Animasi Pohon Kiri -->
-      <img id="tree" src="/assets/images/tree.png" alt="Tree" class="absolute -left-[150px] h-[calc(100vh+300px)] w-auto pointer-events-none z-4"/>
+      <img id="tree" src="/assets/images/tree.png" alt="Tree" class="absolute -left-[150px] sm:-left-[300px] lg:-left-[200px] h-[calc(100vh+300px)] w-auto pointer-events-none z-4"/>
 
-      <!-- Card Cookie -->
-      <div class="p-6 bg-[#2C3B31] flex flex-col gap-3 rounded-2xl relative z-20">
-        <h1 class="text-white text-center text-xl">This website uses cookies</h1>
-        <p class="text-white text-center text-sm">This website uses cookies to ensure you get the best experience on our website</p>
-        <a id="acceptBtn" class="flex justify-center items-center self-center mt-4 px-6 py-2.5 bg-[#78952C] text-white rounded-full uppercase text-sm cursor-pointer hover:bg-white hover:text-[#2C3B31] transition-colors">Next</a>
+      <!-- Animasi Pohon Kanan -->
+       <img id="tree-right" src="/assets/images/Tree-rigth.svg" alt="Tree" class="absolute top-0 -right-[150px] sm:-right-[350px] lg:-right-[230px] h-[calc(100vh+300px)] sm:h-[calc(70vh+300px)] w-auto pointer-events-none z-4"/>
+
+      <!-- Card Banner -->
+      <div class="p-6 lg:py-20 bg-(--color-dark-green) flex flex-col gap-3 rounded-2xl sm:w-[45%] lg:w-[480px] relative z-20">
+        <h1 class="text-(--color-green) text-center">This website uses cookies</h1>
+        <p class="text-white text-center text-sm lg:w-[280px] self-center">This website uses cookies to ensure you get the best experience on our website</p>
+        <a id="acceptBtn" class="self-center mt-2 lg:mt-6 px-6 py-2.5 bg-(--color-green) text-white rounded-full uppercase text-sm hover:bg-white hover:text-(--color-dark-green) transition-colors">Next</a>
       </div>
     </section>
 
     <!-- Transisi Awan -->
-    <img id="transisi-1" src="/assets/images/transisi-1.png" alt="Transition Cloud 1" class="fixed object-cover -translate-y-1/2 h-120 w-120 z-100"/>
-    <img id="transisi-2" src="/assets/images/transisi-2.png" alt="Transition Cloud 1" class="fixed object-cover translate-y-1/6 h-120 w-120 z-100" style="object-position: calc(100% - (-120px)) 0px;"/>
+    <img id="transisi-1" src="/assets/images/transisi-1.png" alt="Transition Cloud 1" class="fixed object-cover -translate-y-1/2 h-120 sm:h-screen w-120 sm:w-screen lg:translate-y-0 lg:-top-[550px] lg:right-[600px] lg:w-[calc(100%+2200px)] lg:h-[calc(100vh+1000px)] lg:object-contain z-100"/>
+    <img id="transisi-2" src="/assets/images/transisi-2.png" alt="Transition Cloud 2" class="transisi-2-position fixed object-cover translate-y-1/6 h-120 sm:h-screen w-120 sm:w-screen lg:translate-y-0 lg:-bottom-[450px] lg:left-[150px] lg:right-auto lg:top-auto lg:w-[calc(100%+1800px)] lg:h-[calc(100vh+800px)] lg:object-contain z-100"/>
 
     <script type="module" src="/src/music.js"></script>
     <script type="module" src="/src/pohon.js"></script>
     <script type="module" src="/src/transisi.js"></script>
+    <script type="module" src="/src/daunterbang.js"></script>
+    <script type="module" src="/src/nozoom.js"></script>
   </body>
 </html>

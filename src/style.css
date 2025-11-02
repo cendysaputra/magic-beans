@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant hover (&:hover);
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -13,6 +14,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Global Color */
+  --color-dark-green: #2c3b31;
+  --color-green: #78952c;
 }
 
 a {
@@ -20,16 +25,68 @@ a {
   text-decoration: inherit;
 }
 
+#acceptBtn {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh; /* mobile */
+  font-size: 0.875em; /* 14px - Mobile & Tablet */
+}
+
+/* Fix mobile viewport height */
+section {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height mobile */
+}
+
+/* Transisi awan 2 position */
+.transisi-2-position {
+  object-position: calc(100% - (-120px)) 0px; /* Mobile: default */
+}
+
+/* Tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .transisi-2-position {
+    object-position: calc(100% - (-180px)) 0px; /* Tablet: geser ke kanan */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .transisi-2-position {
+    object-position: center;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    font-size: 1em;
+  }
 }
 
 h1 {
-  font-size: 3.2em;
+  font-family: "Oranienbaum", serif;
+  font-size: 2.5em;
   line-height: 1.1;
 }
 
@@ -72,9 +129,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
